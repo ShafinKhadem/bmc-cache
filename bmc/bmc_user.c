@@ -326,8 +326,9 @@ retry:
 	}
 
 	for (int i = 0; i < interface_count; i++) {
-		if (bpf_set_link_xdp_fd(interfaces_idx[i], xdp_main_prog_fd, xdp_flags) < 0) {
-			fprintf(stderr, "Error: bpf_set_link_xdp_fd failed for interface %d\n", interfaces_idx[i]);
+    int err = bpf_set_link_xdp_fd(interfaces_idx[i], xdp_main_prog_fd, xdp_flags);
+		if (err < 0) {
+			fprintf(stderr, "Error: bpf_set_link_xdp_fd failed for interface %d: %s (%d)\n", interfaces_idx[i], strerror(-err), -err);
 			return 1;
 		} else {
 			printf("Main BPF program attached to XDP on interface %d\n", interfaces_idx[i]);
