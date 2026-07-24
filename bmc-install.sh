@@ -34,9 +34,9 @@ if [ "$UBUNTU_VERSION" -ge 22 ]; then
     sudo ln -s /usr/local/clang_9.0.0/bin/llc /usr/local/clang_9.0.0/bin/llc-9
 
     sudo DEBIAN_FRONTEND=noninteractive apt -y install gcc-9 g++-9
-    sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
-    sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 110 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
-    sudo update-alternatives --set gcc /usr/bin/gcc-9
+    # sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
+    # sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 110 --slave /usr/bin/g++ g++ /usr/bin/g++-11 --slave /usr/bin/gcov gcov /usr/bin/gcov-11
+    # sudo update-alternatives --set gcc /usr/bin/gcc-9
 else
     sudo DEBIAN_FRONTEND=noninteractive apt -y install gpg curl tar xz-utils make gcc flex bison libssl-dev libelf-dev clang-9 llvm-9 autoconf automake libtool pkg-config m4 libz3-dev libevent-dev libtinfo5
 fi
