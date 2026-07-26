@@ -127,5 +127,7 @@ $(KERN_OBJECTS): %.o: %.c
 	    -O2 -g -emit-llvm -c $< -o ${@:.o=.ll}
 	$(LLC) -march=bpf -filetype=obj -o $@ ${@:.o=.ll}
 
-$(TARGETS): %: %_user.c $(OBJECTS) $(LIBBPF)
+$(KERN_OBJECTS): bmc_common.h
+
+$(TARGETS): %: %_user.c bmc_common.h $(OBJECTS) $(LIBBPF)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $< $(LIBBPF) $(LDFLAGS)
